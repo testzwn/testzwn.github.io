@@ -7,9 +7,6 @@
 				animationTime:1000
 			},o);
 			this.active = 0;
-			this.z1 = 9;
-			this.z2 = 99;
-			this.z3 = 999;
 			this.domReady();
 			this.eventBind();
 		},
