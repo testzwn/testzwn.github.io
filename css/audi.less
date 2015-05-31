@@ -1,0 +1,756 @@
+@img:"../images";
+@red:#e61e24;
+@minHeight: 1250px;
+body{
+	overflow: hidden;
+}
+*{
+	margin:0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+.d-table{
+	display: table;
+}
+.btn-red{
+	display: inline-block;
+	width: 240px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #e61e24;
+	text-align: center;
+	color: #fff;
+	font-size: 24px;
+	text-decoration: none;
+}
+.audi-wrapper{
+	width: 640px;
+	margin: 0 auto;
+}
+.page-item{
+	//height: 1136px;
+	padding: 38px 38px 0 38px;
+	border-bottom: 1px solid #000;
+	font-family: "黑体";
+	position: relative;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	background: #fff;
+	overflow: hidden;
+	-webkit-transition: -webkit-transform 1s linear;
+	.page-inner{
+		position: relative;
+	}
+	&.active{
+		z-index: 999;
+	}
+	.page-inner{
+		&.middle{
+			vertical-align: middle;
+	　　		display: table-cell;
+		}
+	}
+	.logo{
+		height: 40px;
+		margin-bottom: 50px;
+		.lab-logo{
+			width: 254px;
+			height: 40px;
+			background: url("@{img}/audi-icons.png") no-repeat 0 0;
+			float: left;
+		}
+		.audi-logo{
+			width: 230px;
+			height: 30px;
+			background: url("@{img}/audi-icons.png") no-repeat 0 -50px;
+			float: right;
+		}
+	}
+	.future-title{
+		width: 429px;
+		height: 103px;
+		margin-bottom: 32px;
+		background: url("@{img}/audi-icons.png") no-repeat 0 -100px;
+	}
+	.future-text{
+		font-size: 24px;
+		color: #999;
+		margin-bottom: 45px;
+	}
+	.animate{
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		.animate-building{
+			text-align: left;
+			li{
+				height: 520px;
+				float: left;
+				background: url("@{img}/animation-build.png") no-repeat;
+			}
+			@elseH : 80px;
+			@time: 6s;
+			li.b1{
+				width: 156px;
+				background-position: 0 0;
+				@-webkit-keyframes b1{
+					0%{
+						transform: translatey(0);
+					}
+					50%{
+						transform: translatey(280px + @elseH);
+					}
+					100%{
+						transform: translatey(0);
+					}
+				}
+				&.animation-b{
+					-webkit-animation: b1 @time infinite linear;
+				}
+			}
+			li.b2{
+				width: 119px;
+				background-position: -157px 0;
+				@-webkit-keyframes b2{
+					0%{
+						transform: translatey(0);
+					}
+					50%{
+						transform: translatey(428px + @elseH);
+					}
+					100%{
+						transform: translatey(0);
+					}
+				}
+				&.animation-b{
+					-webkit-animation: b2 @time infinite linear;
+					-webkit-animation-delay: 0.5s;
+				}
+			}
+			li.b3{
+				width: 138px;
+				background-position: -156px-119px 0;
+				@-webkit-keyframes b3{
+					0%{
+						transform: translatey(0);
+					}
+					50%{
+						transform: translatey(366px + @elseH);
+					}
+					100%{
+						transform: translatey(0);
+					}
+				}
+				&.animation-b{
+					-webkit-animation: b3 @time infinite linear;
+					-webkit-animation-delay: 1.5s;
+				}
+			}
+			li.b4{
+				width: 156px;
+				background-position: -156px-119px-156px 0;
+				@-webkit-keyframes b4{
+					0%{
+						transform: translatey(0);
+					}
+					50%{
+						transform: translatey(520px + @elseH);
+					}
+					100%{
+						transform: translatey(0);
+					}
+				}
+				&.animation-b{
+					-webkit-animation: b4 @time infinite linear;
+				}
+			}
+			li.b5{
+				width: 71px;
+				background-position: -156px-119px-156px-138px 0;
+				@-webkit-keyframes b5{
+					0%{
+						transform: translatey(0);
+					}
+					50%{
+						transform: translatey(184px + @elseH);
+					}
+					100%{
+						transform: translatey(0);
+					}
+				}
+				&.animation-b{
+					-webkit-animation: b5 @time infinite linear;
+					-webkit-animation-delay: 1.5s;
+				}
+			}
+		}
+		.animate-car{
+			transform: scale(0.8);
+			position: absolute;
+			bottom: -6px;
+			bottom: 0;
+			width: 212px;
+			height: 90px;
+			background: url("@{img}/animate-car.png") no-repeat 0 0;
+			left: -200px;
+			@-webkit-keyframes car{
+				0%{
+					transform: translatex(0)
+				}
+				100%{
+					transform: translatex(640px + 250px);
+				}
+			}
+			&.animation-car{
+				-webkit-animation: car infinite linear 4s;
+			}
+			.wheel{
+				position: absolute;
+				bottom: 0;
+				width: 36px;
+				height: 32px;
+				background: url("@{img}/animate-car.png") no-repeat -25px -58px;
+				@-webkit-keyframes wheel{
+					0%{
+						transform:rotate(0deg)
+					}
+					50%{
+						transform:rotate(180deg)
+					}
+					100%{
+						transform:rotate(360deg)
+					}
+				}
+				&.animation-wheel{
+					-webkit-animation: wheel infinite linear 1.5s;
+				}
+			}	
+			.w1{
+				left: 25px;
+			}
+			.w2{
+				left: 130px;
+			}
+		}
+	}
+}
+.page-0{
+	position: relative;
+	.animate-slide-top{
+		position: absolute;
+		height: 121px;
+		width: 100%;
+		bottom: 30px;
+		left: 0;
+		text-align: center;
+		overflow: hidden;
+		.text{
+			font-size: 24px;
+			color: #e61e24;
+			width: 100%;
+			line-height: 1;
+			margin-bottom: 12px;
+		}
+		.bar{
+			display: inline-block;
+			height: 83px;
+			width: 30px;
+			background: url("@{img}/audi-icons.png") no-repeat 0 -260px;
+			margin-bottom: -154px;
+		}
+		@-webkit-keyframes atop{
+			0%{
+				transform: translatey(0);
+				opacity: 0;
+			}
+			50%{
+				opacity: 1;
+			}
+			100%{
+				transform: translatey(-88px);
+				opacity: 0;
+			}
+		}
+		.animation-top{
+			-webkit-animation:atop 1.5s infinite; 
+		}
+	}
+}
+.page-1{
+	.sign{
+		position: relative;
+		z-index: 1;
+	}
+	.animate-building,.animate-slide-right{
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		text-align: center;
+	}
+	.animate-slide-right{
+		height: 100px;
+		background: rgba(255,255,255,0.8);
+		font-size: 24px;
+		color: #e61e24;
+		.text{
+			margin-top: 25px;
+		}
+		.slide-bar{
+			width: 324px;
+			height: 30px;
+			background: url("@{img}/audi-icons.png") no-repeat 18px -220px;
+			margin: 0 auto;
+			text-align: left;
+			overflow: hidden;
+			@-webkit-keyframes aright{
+				0%{
+					transform: translatex(0);
+				}
+				100%{
+					transform: translatex(324px)
+				}
+			}
+			.bar{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				margin-left: -30px;
+				background: url("@{img}/audi-icons.png") no-repeat -306px -220px;
+				&.animation-right{
+					-webkit-animation: aright 2s infinite;
+				}
+			}
+		}
+	}
+}
+.page-3{
+	.title{
+		font-size: 34px;
+		color: #4b4848;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+	.step{
+		width: 560px;
+		height: 854px;
+		margin: 0 auto;
+		background: url("@{img}/step.png") no-repeat;
+		color: #fff;
+		.step-inner{
+			padding: 45px 38px 0 38px;
+		}
+		.p1{
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+		.p2{
+			font-size: 32px;
+			margin-bottom: 22px;
+		}
+		.p3{
+			font-size: 24px;
+			margin-bottom: 25px;
+			width: 290px;
+			line-height: 1.2;
+		}
+		li.step1{
+			height: 283px;
+  			margin-bottom: 5px;
+		}
+		li.step2{
+			height: 272px;
+			margin-bottom: 5px;
+			text-align: right;
+			.p3{
+				float: right;
+			}
+		}
+		li.step3{
+			height: 290px;
+		}
+	}
+	@media all and (max-height:@minHeight){
+		.title{
+			margin-bottom: -10px;
+		}
+		.step{
+			transform:scale(0.88);
+		}
+	}
+}
+.page-4{
+	.title{
+		width: 530px;
+		height: 71px;
+		background: url("@{img}/audi-icons.png") no-repeat 0 -350px;
+		margin-bottom: 74px;
+	}
+	h4{
+		color: #fff;
+		font-size: 32px;
+		background: #e61e24;
+		width: 184px;
+		height: 46px;
+		line-height: 46px;
+		text-align: center;
+		font-weight: normal;
+		margin: 0 auto;
+		margin-bottom: 16px;
+	}
+	.digest{
+		text-align: center;
+		color: #999;
+		font-size: 24px;
+		margin-bottom: 42px;
+		a{
+			color: #999;
+		}
+	}
+}
+.page-5{
+	.entry-time{
+		width: 561px;
+		height: 815px;
+		background: url("@{img}/part-time.png") no-repeat 0 0;
+		margin: 0 auto;
+		position: relative;
+		.time{
+			position: absolute;
+			opacity: 0;
+			.title{
+				position: absolute;
+				font-size: 22px;
+				color: #fff;
+				height: 34px;
+				line-height: 34px;
+				text-align: center;
+				bottom: 0;
+			}
+			.date{
+				position: absolute;
+				font-size: 20px;
+				color: #e61e24;
+				font-weight: bold;
+				font-family: "Microsoft YaHei";
+				height: 34px;
+				line-height: 34px;
+				text-align: center;
+				bottom: -34px;
+
+			}
+		}
+		.time1{
+			width: 130px;
+			height: 71px;
+			background: url("@{img}/enter-time.png") no-repeat -161px -106px;
+			top: 459px;
+  			left: 215px;
+  			.title{
+				width: 130px;
+			}
+			.date{
+				width: 130px;
+			}
+
+		}
+		.time2{
+			width: 160px;
+			height: 177px;
+			top: 353px;
+  			left: 130px + 215px + 28px;
+  			background: url("@{img}/enter-time.png") no-repeat -317px 0;
+  			.title{
+				width: 160px;
+			}
+			.date{
+				width: 160px;
+			}
+		}
+		.time3{
+			width: 271px;
+			height: 98px;
+			top: 600px;
+			left: 56px;
+			background: url("@{img}/enter-time.png") no-repeat 0 -247px;
+			.title{
+				width: 220px;
+			}
+			.date{
+				width: 220px;
+				bottom: 34px;
+			}
+		}
+		.time4{
+			width: 197px;
+			height: 122px;
+			top: 576px;
+			left: 56px + 271px + 8px;
+			background: url("@{img}/enter-time.png") no-repeat -280px -223px;
+			p{
+				right: 0;
+			}
+			.title{
+				width: 110px;
+			}
+			.date{
+				width: 110px;
+				bottom: 34px;
+			}
+		}
+		.time5{
+			width: 110px;
+			height: 88px;
+			top: 727px;
+			left: 56px;
+			background: url("@{img}/enter-time.png") no-repeat 0 -374px;
+			.title{
+				width: 110px;
+			}
+			.date{
+				width: 110px;
+			}
+		}
+	}
+	.click-wrapper{
+		position: absolute;
+		bottom: 55px;
+		left: 50%;
+		margin-left: -55px;
+		.z-up{
+			z-index: 1;
+		}
+		@-webkit-keyframes scale{
+			0%{
+				transform: scale(0.5);
+				opacity:0;
+			}
+			50%{
+				opacity:1;
+			}
+			100%{
+				transform: scale(0.9);
+				opacity: 0;
+			}
+		}
+		.animation-scale{
+			-webkit-animation: scale infinite 2s linear;
+		}
+		.pointer{
+			width: 100px;
+			height: 100px;
+			background: #fff;
+			position: absolute;
+			.p{
+				opacity: 0;
+			}
+			.p0{
+				background: #fff;
+				width: 100px;
+				height: 100px;
+				border: 5px solid #e61e24;
+				border-radius: 100px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-top: -50px;
+				margin-left: -50px;
+				&.animation-scale{
+					-webkit-animation-delay:0;
+				}
+			}
+			.p1{
+				position: absolute;
+				width: 60px;
+				height: 60px;
+				left: 50%;
+				top: 50%;
+				margin-left: -30px;
+				margin-top: -30px;
+				border: 3px solid @red;
+				border-radius: 60px;
+				&.animation-scale{
+					-webkit-animation-delay:0.1s;
+				}
+			}
+			.p2{
+				position: absolute;
+				width: 28px;
+				height: 28px;
+				left: 50%;
+				top: 50%;
+				margin-left: -14px;
+				margin-top: -14px;
+				border: 3px solid @red;
+				border-radius: 60px;
+				&.animation-scale{
+					-webkit-animation-delay:0.2s;
+				}
+			}
+			.click{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				height: 97px;
+				width: 76px;
+				margin-left: -29px;
+  				margin-top: -17px;
+				background: url("@{img}/enter-time.png") no-repeat 0 0;
+				transform: scale(0.8);
+			}
+		}
+		.prize-cup{
+			position: absolute;
+			opacity: 0;
+			background: #fff;
+			height: 148px;
+			width: 118px;
+			background: url("@{img}/enter-time.png") no-repeat -167px -401px;
+		}
+	}
+}
+.page-6{
+	.ping-title{
+		height: 52px;
+		width: 398px;
+		background: url("@{img}/lastpage.png") no-repeat 0 0;
+		margin: 0 auto;
+		margin-bottom: 60px;
+	}
+	.ping-animate{
+		margin: 0 auto;
+		height: 252px;
+		width: 470px;
+		margin-bottom: 110px;
+		position: relative;
+		.ping-wrapper{
+			height: 252px;
+			width: 470px;
+			background: url("@{img}/bg-auditou.png") no-repeat 0 0;
+			z-index: 3;
+			position: absolute;
+		}	
+		.p{
+			z-index: 1;
+			opacity: 0.7;
+			transition: all 1s;
+			&.hover{
+				background-image: url("@{img}/bg-person-hover.png");
+				opacity: 1;
+			}
+		}
+		.p1{
+			position: absolute;
+			width: 130px;
+			height: 139px;
+			background: url("@{img}/bg-person-hover.png") no-repeat 0 -34px;
+			bottom: 27px;
+			left: 65px;
+			transition-delay:0; 
+		}
+		.p2{
+			position: absolute;
+			width: 76px;
+			height: 139px;
+			background: url("@{img}/bg-person-hover.png") no-repeat -130px 0;
+			bottom: 60px;
+			left: 195px;
+			transition-delay:1s; 
+		}
+		.p3{
+			position: absolute;
+			width: 127px;
+			height: 139px;
+			background: url("@{img}/bg-person-hover.png") no-repeat -206px -30px;
+			bottom: 31px;
+			left: 272px;
+			transition-delay:2s; 
+		}
+		.zhizhen{
+			width: 62px;
+			height: 78px;
+			background: url("@{img}/zhizhen.png") no-repeat 0;
+			bottom: 80px;
+			position: absolute;
+			left: 50%;
+			margin-left: -62px;
+			z-index: 2;
+			transform:rotate(-40deg);
+			transform-origin:100% 100%;
+			-webkit-transition: all 3s; 
+			@-webkit-keyframes rotate{
+				0%{
+					transform:rotate(-40deg);
+				}
+				100%{
+					transform:rotate(120deg);
+				}
+			}
+			&.animation-rotate{
+				//-webkit-animation: rotate 4s 1;
+				transform:rotate(120deg);
+				-webkit-transition: all 4s; 
+			}
+		}
+	}
+	.prize-title{
+		width: 285px;
+		height: 45px;
+		margin: 0 auto;
+		background: url("@{img}/lastpage.png") no-repeat 0 -80px;
+		margin-bottom: 45px;
+	}
+	.prize-list{
+		font-size: 24px;
+		color: #999;
+		margin-bottom: 80px;
+		span{
+			float: left;
+		}
+		p{
+			margin-left: 36px;
+			line-height: 1.3;
+		}
+	}
+	.digest{
+		width: 534px;
+		height: 82px;
+		margin: 0 auto;
+		background: url("@{img}/lastpage.png") no-repeat 0 -140px;
+		margin-bottom: 36px;
+	}
+	.btn-in{
+		font-size: 28px;
+		width: 310px;
+		height: 60px;
+		line-height: 60px;
+		display: block;
+		margin: 0 auto;
+		color: #fff;
+		background: @red;
+		text-decoration: none;
+		text-align: center;
+	}
+	@media all and (max-height:@minHeight){
+		.ping-title{
+			margin-bottom: 30px !important;
+		}
+		.ping-animate{
+			margin-bottom: 30px;
+		}
+		.prize-list{
+			margin-bottom: 30px;
+		}
+		.digest{
+			margin-bottom: 10px;
+		}
+	}
+}
+
+
+
+
+
