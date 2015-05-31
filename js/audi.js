@@ -1,5 +1,6 @@
-
 ;(function($){
+	window.scrollTo(0,1)
+
 	var scroll = {
 		init: function(o){
 			$.extend(this,{
@@ -15,56 +16,54 @@
 		domReady: function(){
 			this.windowHeight = document.documentElement.clientHeight;
 			$('body').height(this.windowHeight)
-			this.$page = $("."+this.itemClass).hide();
+			this.$page = $("."+this.itemClass);
 			this.$page.height(this.windowHeight);
-			this.$page.eq(this.active).show();
+			this.$page.eq(this.active).addClass('active')
 		},
 		moveUp:function(){
 			var that = this;
-			if(this.active < this.$page.length-1){
-				this.$page.eq(this.active).animate({
-					"transform":"translateY(-100%)"
-				},this.animationTime);
+			var prev = this.$page.eq(this.active);
+			var active = this.$page.eq(this.active + 1);
+			if(this.active < this.$page.length-1 && !this.isAnimated){	
+				this.isAnimated = true;
+				prev.addClass('animated slideOutUp').removeClass("active");
 				this.active++
-				this.$page.eq(this.active).css({
-					"transform": "translateY(100%)"
-				}).show()
-
-				this.$page.eq(this.active).animate({
-					"transform": "translateY(0)"
-				},{
-					duration:this.animationTime,
-					complete:function(){
-						that.callback && that.callback(that.active);
-					}
-				})
-
+				setTimeout(function(){
+					active.addClass('animated slideInUp active')
+				}.bind(this), 0)
+				active.one('webkitAnimationEnd', function(){
+					prev.removeClass('animated slideOutUp');
+					active.removeClass('animated slideInUp');
+					that.callback && that.callback(that.active);
+					that.isAnimated = false;
+				})				
 				
 			}
 		},
 		moveDown:function(){
 			var that = this;
-			if(this.active >0){
-				this.$page.eq(this.active).animate({
-					"transform":"translateY(100%)"
-				},this.animationTime);
+			var prev = this.$page.eq(this.active)
+			var active = this.$page.eq(this.active - 1)
+			if(this.active >0 && !this.isAnimated){
+				this.isAnimated = true;
+				prev.addClass('animated slideOutDown')
 				this.active--
-				this.$page.eq(this.active).css({
-					"transform": "translateY(-100%)"
-				}).show()
-
-				this.$page.eq(this.active).animate({
-					"transform": "translateY(0)"
-				},{
-					duration:this.animationTime,
-					complete:function(){
-						that.callback && that.callback(that.active);
-					}
+				setTimeout(function(){
+					active.addClass('animated slideInDown active')
+				}.bind(this), 0)
+				active.one('webkitAnimationEnd', function(){
+					prev.removeClass('animated slideOutDown').removeClass("active");
+					active.removeClass('animated slideInDown');
+					that.callback && that.callback(that.active);
+					that.isAnimated = false;
 				})
 			}
 		},
 		eventBind: function(){
 			var that = this;
+			$(document).on('touchmove', function(e){
+				e.preventDefault()
+			})
 			this.$page.swipeUp(function(){
 				that.moveUp();
 			})
@@ -113,9 +112,8 @@
 	audi.init();
 	scroll.init({
 		itemClass:"page-item",
-		animationTime: 500,
+		animationTime: 300,
 		callback: function(i){
-			debugger;
 			if(i == 5){
 				$(".zhizhen").addClass("animation-rotate");
 				$(".ping-animate .p").addClass("hover");
